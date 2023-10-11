@@ -1,0 +1,34 @@
+Profit Limiting Public License (PLPL)
+
+Version 1.0
+
+Preamble
+The Profit Limiting Public License is a free license that limits the commercial use of the licensed material(s), however the license does not restrict the use of the material(s) for non-commercial purposes.
+
+TERMS AND CONDITIONS
+1. Definitions
+    a. "License" shall mean the terms and conditions for use, reproduction, and distribution as defined by this document.
+    b. "Licensor" shall mean the copyright owner or entity authorized by the copyright owner that is granting the License.
+    c. "Legal Entity" shall mean the union of the acting entity and all other entities that control, are controlled by, or are under common control with that entity. For the purposes of this definition, "control" means 
+        (i) the power, direct or indirect, to cause the direction or management of such entity, whether by contract or otherwise, or 
+        (ii) ownership of fifty percent (50%) or more of the outstanding shares, or 
+        (iii) beneficial ownership of such entity.
+    d. "You" (or "Your") shall mean an individual or Legal Entity exercising permissions granted by this License.
+    e. "Material" shall mean the work licensed under this License, which can be source code, binary code, or any other form of work. This also include articles, images, videos, and any other form of work.
+    f. "Commercial Use" shall mean use of the Material for any purpose that is primarily intended for or directed toward commercial advantage or monetary compensation.
+
+2.License Conditions
+    a. Usage: You are permitted to use the materials.
+    b. Modification: Modification of the materials are allowed.
+    c. Republication: Republication of the materials without modification is not allowed, except when incorporated into a larger project. In such cases, the material itself must be issued under the same license (Profit Limiting Public License, Version 1.0), while the larger project may be issued under a different license.
+    d. Profit Limitation: Making more than $2500 using the material for commercial purposes is not allowed, without the written or electronic request bearing the physical or digital signature of the copyright owner.
+    e. Clause d includes project that incorporated the materials, or modification of the materials, and not just the material itself.
+
+3.Termination
+This License shall terminate under the following conditions:
+    a. Breach of Conditions: In the event of a breach of the conditions listed in subsection 2 of the Terms and Conditions.
+    b. Request by Copyright Owner: Upon receipt of a written, electronic, or other requests bearing the physical or digital signature of the copyright owner.
+
+4.Disclaimer of Warranty and Limitation of Liability
+THE SOFTWARE IS PROVIDED “AS IS”, WITHOUT WARRANTY OF ANY KIND, EXPRESS OR IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY, FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. 
+IN NO EVENT SHALL THE AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM, OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.

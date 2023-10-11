@@ -1,94 +1,104 @@
 	.file	"3.cpp"
 	.text
+	.p2align 4
 	.globl	_Z8trig_numi
 	.type	_Z8trig_numi, @function
 _Z8trig_numi:
-.LFB2354:
+.LFB2679:
 	.cfi_startproc
-	leal	1(%rdi), %eax
-	pushq	$2
-	popq	%rcx
-	imull	%edi, %eax
-	cltd
-	idivl	%ecx
+	leal	1(%rdi), %edx
+	imull	%edi, %edx
+	movl	%edx, %eax
+	shrl	$31, %eax
+	addl	%edx, %eax
+	sarl	%eax
 	ret
 	.cfi_endproc
-.LFE2354:
+.LFE2679:
 	.size	_Z8trig_numi, .-_Z8trig_numi
+	.p2align 4
 	.globl	_Z16mutiple_of_threei
 	.type	_Z16mutiple_of_threei, @function
 _Z16mutiple_of_threei:
-.LFB2355:
+.LFB2680:
 	.cfi_startproc
-	xorl	%eax, %eax
-	testb	$1, %dil
-	jne	.L8
-	cvtsi2sdl	%edi, %xmm0
-	pushq	%r14
+	imull	$-1431655765, %edi, %eax
+	pushq	%rbp
 	.cfi_def_cfa_offset 16
-	.cfi_offset 14, -16
+	.cfi_offset 6, -16
+	xorl	%ebp, %ebp
 	pushq	%rbx
 	.cfi_def_cfa_offset 24
 	.cfi_offset 3, -24
-	movl	%edi, %ebx
-	pushq	%rcx
+	addl	$715827882, %eax
+	rorl	%eax
+	subq	$8, %rsp
 	.cfi_def_cfa_offset 32
+	cmpl	$715827882, %eax
+	ja	.L3
+	pxor	%xmm0, %xmm0
+	movl	%edi, %ebx
+	cvtsi2sdl	%edi, %xmm0
 	call	cbrt@PLT
-	movq	%xmm0, %r14
-	call	floor@PLT
+	pxor	%xmm1, %xmm1
 	movl	%ebx, %eax
 	cvttsd2sil	%xmm0, %ecx
+	cvtsi2sdl	%ecx, %xmm1
+	leal	-1(%rcx), %esi
+	comisd	%xmm0, %xmm1
+	cmovbe	%ecx, %esi
 	cltd
-	idivl	%ecx
-	xorl	%eax, %eax
+	idivl	%esi
 	testl	%edx, %edx
-	jne	.L2
-	movq	%r14, %xmm0
-	call	ceil@PLT
+	jne	.L3
+	comisd	%xmm1, %xmm0
+	leal	1(%rcx), %eax
+	cmova	%eax, %ecx
 	movl	%ebx, %eax
-	cvttsd2sil	%xmm0, %ecx
 	cltd
 	idivl	%ecx
-	xorl	%eax, %eax
 	testl	%edx, %edx
-	jne	.L2
+	jne	.L3
 	movl	%ebx, %eax
-	incl	%ecx
+	addl	$1, %ecx
 	cltd
 	idivl	%ecx
 	testl	%edx, %edx
-	sete	%al
-.L2:
-	popq	%rdx
+	sete	%bpl
+.L3:
+	addq	$8, %rsp
 	.cfi_def_cfa_offset 24
+	movl	%ebp, %eax
 	popq	%rbx
 	.cfi_def_cfa_offset 16
-	popq	%r14
+	popq	%rbp
 	.cfi_def_cfa_offset 8
 	ret
-.L8:
-	.cfi_restore 3
-	.cfi_restore 14
-	ret
 	.cfi_endproc
-.LFE2355:
+.LFE2680:
 	.size	_Z16mutiple_of_threei, .-_Z16mutiple_of_threei
+	.p2align 4
 	.globl	_Z14first_of_threei
 	.type	_Z14first_of_threei, @function
 _Z14first_of_threei:
-.LFB2356:
+.LFB2681:
 	.cfi_startproc
-	cvtsi2sdl	%edi, %xmm0
-	pushq	%rax
+	pxor	%xmm0, %xmm0
+	subq	$8, %rsp
 	.cfi_def_cfa_offset 16
+	cvtsi2sdl	%edi, %xmm0
 	call	cbrt@PLT
-	call	floor@PLT
-	popq	%rdx
-	.cfi_def_cfa_offset 8
+	pxor	%xmm1, %xmm1
 	cvttsd2sil	%xmm0, %eax
+	cvtsi2sdl	%eax, %xmm1
+	leal	-1(%rax), %edx
+	comisd	%xmm0, %xmm1
+	cmova	%edx, %eax
+	addq	$8, %rsp
+	.cfi_def_cfa_offset 8
 	ret
 	.cfi_endproc
-.LFE2356:
+.LFE2681:
 	.size	_Z14first_of_threei, .-_Z14first_of_threei
 	.section	.rodata.str1.1,"aMS",@progbits,1
 .LC0:
@@ -96,39 +106,69 @@ _Z14first_of_threei:
 .LC1:
 	.string	") "
 	.section	.text.startup,"ax",@progbits
+	.p2align 4
 	.globl	main
 	.type	main, @function
 main:
-.LFB2357:
+.LFB2682:
 	.cfi_startproc
 	pushq	%r12
 	.cfi_def_cfa_offset 16
 	.cfi_offset 12, -16
+	movl	$40, %edi
 	leaq	.LC0(%rip), %r12
 	pushq	%rbp
 	.cfi_def_cfa_offset 24
 	.cfi_offset 6, -24
+	movl	$1, %ebp
 	pushq	%rbx
 	.cfi_def_cfa_offset 32
 	.cfi_offset 3, -32
-	pushq	$40
-	popq	%rdi
+	movl	$2, %ebx
 	call	putchar@PLT
-	pushq	$1
-	popq	%rbp
-	pushq	$2
-	popq	%rbx
-.L16:
-	movl	%ebp, %edi
-	call	_Z16mutiple_of_threei
-	testb	%al, %al
-	je	.L15
-	movl	%ebp, %edi
-	call	_Z14first_of_threei
-	leal	-1(%rbx), %esi
+	jmp	.L18
+	.p2align 4,,10
+	.p2align 3
+.L19:
+	movl	%eax, %ebx
+.L18:
+	imull	$-1431655765, %ebp, %eax
+	rorl	%eax
+	cmpl	$715827882, %eax
+	ja	.L15
+	pxor	%xmm0, %xmm0
+	cvtsi2sdl	%ebp, %xmm0
+	call	cbrt@PLT
+	pxor	%xmm1, %xmm1
+	movl	%ebp, %eax
+	cvttsd2sil	%xmm0, %ecx
+	cvtsi2sdl	%ecx, %xmm1
+	leal	-1(%rcx), %esi
+	comisd	%xmm0, %xmm1
+	cmovbe	%ecx, %esi
+	cltd
+	idivl	%esi
+	testl	%edx, %edx
+	jne	.L15
+	comisd	%xmm1, %xmm0
+	leal	1(%rcx), %eax
+	cmova	%eax, %ecx
+	movl	%ebp, %eax
+	cltd
+	idivl	%ecx
+	testl	%edx, %edx
+	jne	.L15
+	movl	%ebp, %eax
+	addl	$1, %ecx
+	cltd
+	idivl	%ecx
+	testl	%edx, %edx
+	jne	.L15
+	leal	-1(%rbx), %eax
+	movl	%esi, %edx
 	movl	%ebp, %ecx
 	movq	%r12, %rdi
-	movl	%eax, %edx
+	movl	%eax, %esi
 	xorl	%eax, %eax
 	call	printf@PLT
 .L15:
@@ -137,10 +177,7 @@ main:
 	movl	%ebx, %ebp
 	sarl	%ebp
 	cmpl	$516948433, %ebx
-	jg	.L22
-	movl	%eax, %ebx
-	jmp	.L16
-.L22:
+	jle	.L19
 	leaq	.LC1(%rip), %rdi
 	call	puts@PLT
 	popq	%rbx
@@ -152,11 +189,12 @@ main:
 	.cfi_def_cfa_offset 8
 	ret
 	.cfi_endproc
-.LFE2357:
+.LFE2682:
 	.size	main, .-main
+	.p2align 4
 	.type	_GLOBAL__sub_I__Z8trig_numi, @function
 _GLOBAL__sub_I__Z8trig_numi:
-.LFB3033:
+.LFB3445:
 	.cfi_startproc
 	pushq	%rbx
 	.cfi_def_cfa_offset 16
@@ -171,7 +209,7 @@ _GLOBAL__sub_I__Z8trig_numi:
 	leaq	__dso_handle(%rip), %rdx
 	jmp	__cxa_atexit@PLT
 	.cfi_endproc
-.LFE3033:
+.LFE3445:
 	.size	_GLOBAL__sub_I__Z8trig_numi, .-_GLOBAL__sub_I__Z8trig_numi
 	.section	.init_array,"aw"
 	.align 8

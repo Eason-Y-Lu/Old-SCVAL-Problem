@@ -16,7 +16,7 @@ int trig_num(int n){
 }
 
 bool mutiple_of_three(int num){
-    if (num % 2 !=0){
+    if (num % 6 !=0){
         return false;
     }else{
         int a = floor(cbrt(num));

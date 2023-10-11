@@ -32,11 +32,14 @@ _Z16mutiple_of_threei:                  # @_Z16mutiple_of_threei
 	.cfi_def_cfa_offset 32
 	.cfi_offset %rbx, -24
 	.cfi_offset %rbp, -16
+	imull	$-1431655765, %edi, %eax        # imm = 0xAAAAAAAB
+	addl	$715827882, %eax                # imm = 0x2AAAAAAA
+	rorl	%eax
+	cmpl	$715827882, %eax                # imm = 0x2AAAAAAA
+	ja	.LBB1_1
+# %bb.3:
 	movl	%edi, %ebx
-	testb	$1, %bl
-	jne	.LBB1_3
-# %bb.1:
-	cvtsi2sd	%ebx, %xmm0
+	cvtsi2sd	%edi, %xmm0
 	callq	cbrt@PLT
 	movsd	%xmm0, (%rsp)                   # 8-byte Spill
 	callq	floor@PLT
@@ -48,7 +51,7 @@ _Z16mutiple_of_threei:                  # @_Z16mutiple_of_threei
 	cltd
 	idivl	%ebp
 	testl	%edx, %edx
-	jne	.LBB1_3
+	jne	.LBB1_1
 # %bb.5:
 	cvttsd2si	%xmm0, %ecx
 	movl	%ebx, %eax
@@ -56,7 +59,7 @@ _Z16mutiple_of_threei:                  # @_Z16mutiple_of_threei
 	idivl	%ecx
 	testl	%edx, %edx
 	je	.LBB1_7
-.LBB1_3:
+.LBB1_1:
 	xorl	%eax, %eax
                                         # kill: def $al killed $al killed $eax
 	addq	$8, %rsp
@@ -130,27 +133,27 @@ main:                                   # @main
 	.cfi_offset %rbp, -16
 	movl	$40, %edi
 	callq	putchar@PLT
-	movl	$2, %ebx
-	movl	$1, %ebp
-	movl	$3, %r12d
+	movl	$1, %r12d
+	movl	$3, %ebx
 	leaq	.L.str.1(%rip), %r14
 	jmp	.LBB3_1
 	.p2align	4, 0x90
 .LBB3_6:                                #   in Loop: Header=BB3_1 Depth=1
-	imull	%r12d, %ebx
-	movl	%ebx, %ebp
+	imull	%ebx, %ebp
 	shrl	%ebp
-	addl	$1, %r12d
-	cmpl	$22739, %r12d                   # imm = 0x58D3
+	addl	$1, %ebx
+	movl	%ebp, %r12d
+	cmpl	$22739, %ebx                    # imm = 0x58D3
 	je	.LBB3_7
 .LBB3_1:                                # =>This Inner Loop Header: Depth=1
-	movl	%ebx, %eax
-	leal	-1(%r12), %ebx
-	testb	$2, %al
-	jne	.LBB3_6
+	leal	-1(%rbx), %ebp
+	imull	$-1431655765, %r12d, %eax       # imm = 0xAAAAAAAB
+	rorl	%eax
+	cmpl	$715827882, %eax                # imm = 0x2AAAAAAA
+	ja	.LBB3_6
 # %bb.2:                                #   in Loop: Header=BB3_1 Depth=1
 	xorps	%xmm0, %xmm0
-	cvtsi2sd	%ebp, %xmm0
+	cvtsi2sd	%r12d, %xmm0
 	callq	cbrt@PLT
 	movsd	%xmm0, 8(%rsp)                  # 8-byte Spill
 	callq	floor@PLT
@@ -158,30 +161,30 @@ main:                                   # @main
 	movsd	8(%rsp), %xmm0                  # 8-byte Reload
                                         # xmm0 = mem[0],zero
 	callq	ceil@PLT
-	movl	%ebp, %eax
+	movl	%r12d, %eax
 	cltd
 	idivl	%r15d
 	testl	%edx, %edx
 	jne	.LBB3_6
 # %bb.3:                                #   in Loop: Header=BB3_1 Depth=1
 	cvttsd2si	%xmm0, %ecx
-	movl	%ebp, %eax
+	movl	%r12d, %eax
 	cltd
 	idivl	%ecx
 	testl	%edx, %edx
 	jne	.LBB3_6
 # %bb.4:                                #   in Loop: Header=BB3_1 Depth=1
 	addl	$1, %ecx
-	movl	%ebp, %eax
+	movl	%r12d, %eax
 	cltd
 	idivl	%ecx
 	testl	%edx, %edx
 	jne	.LBB3_6
 # %bb.5:                                #   in Loop: Header=BB3_1 Depth=1
-	leal	-2(%r12), %esi
+	leal	-2(%rbx), %esi
 	movq	%r14, %rdi
 	movl	%r15d, %edx
-	movl	%ebp, %ecx
+	movl	%r12d, %ecx
 	xorl	%eax, %eax
 	callq	printf@PLT
 	jmp	.LBB3_6
@@ -247,6 +250,7 @@ _GLOBAL__sub_I_3.cpp:                   # @_GLOBAL__sub_I_3.cpp
 	.asciz	") "
 	.size	.Lstr, 3
 
+	.section	".linker-options","e",@llvm_linker_options
 	.ident	"Debian clang version 14.0.6"
 	.section	".note.GNU-stack","",@progbits
 	.addrsig

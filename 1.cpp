@@ -36,7 +36,7 @@ int main() {
         if (conseint(trinum(x))) {
             int y = iconseint(trinum(x));
             int z = trinum(x);
-            printf("%d %d %d",x,y,z);
+            printf("(%d %d %d)",x,y,z);
         }
     }
     printf(")");

@@ -35,7 +35,7 @@ int main() {
         if (mutiple_of_three(trig_num(x))) {
             int y = first_of_three(trig_num(x));
             int z = trig_num(x);
-            printf("%d %d %d",x,y,z);
+            printf("(%d %d %d)",x,y,z);
         }
     }
     printf(")");

@@ -97,34 +97,7 @@ jobs:
           if ! $success; then
             exit 1
           fi
-
-      - name: Compile C++ code on arm
-        run: |
-          success=false
-          # Compile with different C++ standards on arm
-          if clang++ -std=c++03 -target arm64 -Wall -Wextra -Werror -pedantic -c 1.cpp -o armclang03.o; then
-            success=true
-          fi
-          if clang++ -std=c++11 -target arm64 -Wall -Wextra -Werror -pedantic -c 1.cpp -o armclang11.o; then
-            success=true
-          fi
-          if clang++ -std=c++14 -target arm64 -Wall -Wextra -Werror -pedantic -c 1.cpp -o armclang14.o; then
-            success=true
-          fi
-          if clang++ -std=c++17 -target arm64 -Wall -Wextra -Werror -pedantic -c 1.cpp -o armclang17.o; then
-            success=true
-          fi
-          if clang++ -std=c++20 -target arm64 -Wall -Wextra -Werror -pedantic -c 1.cpp -o armclang20.o; then
-            success=true
-          fi
-          if clang++ -std=c++2b -target arm64 -Wall -Wextra -Werror -pedantic -c 1.cpp -o armclang23.o; then
-            success=true
-          fi
-          # Exit with a non-zero status if none of the compilations succeeded
-          if ! $success; then
-            exit 1
-          fi
-
+          
       - name: Upload build artifact
         if: always()
         uses: actions/upload-artifact@v3

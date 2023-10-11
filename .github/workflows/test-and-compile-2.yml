@@ -1,0 +1,125 @@
+#Change 2.cpp to the cpp file you want to compile
+
+name: C++ code tester
+
+on:
+  pull_request:
+    branches:
+      - '*'
+  push:
+    branches:
+      - '*'
+  release:
+    branches:
+      - '*'
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v3
+
+      - name: Install C++ compilers
+        run: |
+          sudo apt install -y g++
+          sudo apt install -y clang
+          sudo apt install -y llvm
+          sudo apt install -y gcc
+
+      - name: Compile C++ code
+        run: |
+          success=false
+          # Compile with different C++ standards
+          if g++ -std=c++03 -Wall -Wextra -Werror -pedantic -c 2.cpp -o gcc03.o; then
+            success=true
+          fi
+          if g++ -std=c++11 -Wall -Wextra -Werror -pedantic -c 2.cpp -o gcc11.o; then
+            success=true
+          fi
+          if g++ -std=c++14 -Wall -Wextra -Werror -pedantic -c 2.cpp -o gcc14.o; then
+            success=true
+          fi
+          if g++ -std=c++17 -Wall -Wextra -Werror -pedantic -c 2.cpp -o gcc17.o; then
+            success=true
+          fi
+          if g++ -std=c++20 -Wall -Wextra -Werror -pedantic -c 2.cpp -o gcc20.o; then
+            success=true
+          fi
+          if g++ -std=c++23 -Wall -Wextra -Werror -pedantic -c 2.cpp -o gcc23.o; then
+            success=true
+          fi
+          if clang++ -std=c++03 -Wall -Wextra -Werror -pedantic -c 2.cpp -o clang03.o; then
+            success=true
+          fi
+          if clang++ -std=c++11 -Wall -Wextra -Werror -pedantic -c 2.cpp -o clang11.o; then
+            success=true
+          fi
+          if clang++ -std=c++14 -Wall -Wextra -Werror -pedantic -c 2.cpp -o clang14.o; then
+            success=true
+          fi
+          if clang++ -std=c++17 -Wall -Wextra -Werror -pedantic -c 2.cpp -o clang17.o; then
+            success=true
+          fi
+          if clang++ -std=c++20 -Wall -Wextra -Werror -pedantic -c 2.cpp -o clang20.o; then
+            success=true
+          fi
+          if clang++ -std=c++2b -Wall -Wextra -Werror -pedantic -c 2.cpp -o clang23.o; then
+            success=true
+          fi
+          # Exit with a non-zero status if none of the compilations succeeded
+          if ! $success; then
+            exit 1
+          fi
+
+      - name: Generate asm code
+        run: |
+          success=false
+          # Compile with different C++ standards
+          if g++ -std=c++03 -Wall -Wextra -Werror -pedantic -c 2.cpp -o gcc03.s; then
+            success=true
+          fi
+          if g++ -std=c++11 -Wall -Wextra -Werror -pedantic -c 2.cpp -o gcc11.s; then
+            success=true
+          fi
+          if g++ -std=c++14 -Wall -Wextra -Werror -pedantic -c 2.cpp -o gcc14.s; then
+            success=true
+          fi
+          if g++ -std=c++17 -Wall -Wextra -Werror -pedantic -c 2.cpp -o gcc17.s; then
+            success=true
+          fi
+          if g++ -std=c++20 -Wall -Wextra -Werror -pedantic -c 2.cpp -o gcc20.s; then
+            success=true
+          fi
+          if g++ -std=c++23 -Wall -Wextra -Werror -pedantic -c 2.cpp -o gcc23.s; then
+            success=true
+          fi
+          if clang++ -std=c++03 -Wall -Wextra -Werror -pedantic -S 2.cpp -o clang03.s; then
+            success=true
+          fi
+          if clang++ -std=c++11 -Wall -Wextra -Werror -pedantic -S 2.cpp -o clang11.s; then
+            success=true
+          fi
+          if clang++ -std=c++14 -Wall -Wextra -Werror -pedantic -S 2.cpp -o clang14.s; then
+            success=true
+          fi
+          if clang++ -std=c++17 -Wall -Wextra -Werror -pedantic -S 2.cpp -o clang17.s; then
+            success=true
+          fi
+          if clang++ -std=c++20 -Wall -Wextra -Werror -pedantic -S 2.cpp -o clang20.s; then
+            success=true
+          fi
+          if clang++ -std=c++2b -Wall -Wextra -Werror -pedantic -S 2.cpp -o clang23.s; then
+            success=true
+          fi
+          # Exit with a non-zero status if none of the generation succeeded
+          if ! $success; then
+            exit 1
+          fi
+
+      - name: Upload build artifact
+        if: always()
+        uses: actions/upload-artifact@v3
+        with:
+          name: build-artifact
+          path: .

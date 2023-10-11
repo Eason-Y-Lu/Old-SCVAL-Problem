@@ -31,13 +31,13 @@ int first_of_three(int num) {
 }
 int main() {
     printf("(");
-    for (int x = 0; trig_num(x) <= 258474216; x++) {
+    for (int x = 1; trig_num(x) <= 258474216; x++) {
         if (mutiple_of_three(trig_num(x))) {
             int y = first_of_three(trig_num(x));
             int z = trig_num(x);
             printf("(%d %d %d)",x,y,z);
         }
     }
-    printf(")");
+    printf(") \n");
     return 0;
 }

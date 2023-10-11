@@ -32,7 +32,7 @@ int iconseint(int num) {
 }
 int main() {
     printf("(");
-    for (int x = 0; trinum(x) <= 258474216; x++) {
+    for (int x = 1; trinum(x) <= 258474216; x++) {
         if (conseint(trinum(x))) {
             int y = iconseint(trinum(x));
             int z = trinum(x);

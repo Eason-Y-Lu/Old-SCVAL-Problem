@@ -22,13 +22,22 @@ bool mutiple_of_three(int num){
         int a = floor(cbrt(num));
         int b = ceil(cbrt(num));
         int c = b + 1;
-        if (num == a * b * c){
-            return true;
+        if (num % a == 0){
+            if (num % b == 0){
+                if (num % c == 0){
+                    return true;
+                }else{
+                    return false;
+                }
+            }else{
+                return false;
+            }
         }else{
             return false;
         }
     }
 }
+
 int first_of_three(int num) {
     int a = floor(cbrt(num));
     return a;

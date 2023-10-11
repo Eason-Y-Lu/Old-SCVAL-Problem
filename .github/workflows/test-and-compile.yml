@@ -1,4 +1,4 @@
-#Change main.cpp to the cpp file you want to compile
+#Change 1.cpp to the cpp file you want to compile
 
 name: C++ code tester
 description: Compile and test c++ file
@@ -34,40 +34,40 @@ jobs:
         run: |
           success=false
           # Compile with different C++ standards
-          if g++ -std=c++03 -Wall -Wextra -Werror -pedantic -c main.cpp -o gcc03.o; then
+          if g++ -std=c++03 -Wall -Wextra -Werror -pedantic -c 1.cpp -o gcc03.o; then
             success=true
           fi
-          if g++ -std=c++11 -Wall -Wextra -Werror -pedantic -c main.cpp -o gcc11.o; then
+          if g++ -std=c++11 -Wall -Wextra -Werror -pedantic -c 1.cpp -o gcc11.o; then
             success=true
           fi
-          if g++ -std=c++14 -Wall -Wextra -Werror -pedantic -c main.cpp -o gcc14.o; then
+          if g++ -std=c++14 -Wall -Wextra -Werror -pedantic -c 1.cpp -o gcc14.o; then
             success=true
           fi
-          if g++ -std=c++17 -Wall -Wextra -Werror -pedantic -c main.cpp -o gcc17.o; then
+          if g++ -std=c++17 -Wall -Wextra -Werror -pedantic -c 1.cpp -o gcc17.o; then
             success=true
           fi
-          if g++ -std=c++20 -Wall -Wextra -Werror -pedantic -c main.cpp -o gcc20.o; then
+          if g++ -std=c++20 -Wall -Wextra -Werror -pedantic -c 1.cpp -o gcc20.o; then
             success=true
           fi
-          if g++ -std=c++23 -Wall -Wextra -Werror -pedantic -c main.cpp -o gcc23.o; then
+          if g++ -std=c++23 -Wall -Wextra -Werror -pedantic -c 1.cpp -o gcc23.o; then
             success=true
           fi
-          if clang++ -std=c++03 -Wall -Wextra -Werror -pedantic -c main.cpp -o clang03.o; then
+          if clang++ -std=c++03 -Wall -Wextra -Werror -pedantic -c 1.cpp -o clang03.o; then
             success=true
           fi
-          if clang++ -std=c++11 -Wall -Wextra -Werror -pedantic -c main.cpp -o clang11.o; then
+          if clang++ -std=c++11 -Wall -Wextra -Werror -pedantic -c 1.cpp -o clang11.o; then
             success=true
           fi
-          if clang++ -std=c++14 -Wall -Wextra -Werror -pedantic -c main.cpp -o clang14.o; then
+          if clang++ -std=c++14 -Wall -Wextra -Werror -pedantic -c 1.cpp -o clang14.o; then
             success=true
           fi
-          if clang++ -std=c++17 -Wall -Wextra -Werror -pedantic -c main.cpp -o clang17.o; then
+          if clang++ -std=c++17 -Wall -Wextra -Werror -pedantic -c 1.cpp -o clang17.o; then
             success=true
           fi
-          if clang++ -std=c++20 -Wall -Wextra -Werror -pedantic -c main.cpp -o clang20.o; then
+          if clang++ -std=c++20 -Wall -Wextra -Werror -pedantic -c 1.cpp -o clang20.o; then
             success=true
           fi
-          if clang++ -std=c++2b -Wall -Wextra -Werror -pedantic -c main.cpp -o clang23.o; then
+          if clang++ -std=c++2b -Wall -Wextra -Werror -pedantic -c 1.cpp -o clang23.o; then
             success=true
           fi
           # Exit with a non-zero status if none of the compilations succeeded
@@ -79,22 +79,22 @@ jobs:
         run: |
           success=false
           # generate with different C++ standards
-          if clang++ -std=c++03 -Wall -Wextra -Werror -pedantic -S main.cpp -o clang03.s; then
+          if clang++ -std=c++03 -Wall -Wextra -Werror -pedantic -S 1.cpp -o clang03.s; then
             success=true
           fi
-          if clang++ -std=c++11 -Wall -Wextra -Werror -pedantic -S main.cpp -o clang11.s; then
+          if clang++ -std=c++11 -Wall -Wextra -Werror -pedantic -S 1.cpp -o clang11.s; then
             success=true
           fi
-          if clang++ -std=c++14 -Wall -Wextra -Werror -pedantic -S main.cpp -o clang14.s; then
+          if clang++ -std=c++14 -Wall -Wextra -Werror -pedantic -S 1.cpp -o clang14.s; then
             success=true
           fi
-          if clang++ -std=c++17 -Wall -Wextra -Werror -pedantic -S main.cpp -o clang17.s; then
+          if clang++ -std=c++17 -Wall -Wextra -Werror -pedantic -S 1.cpp -o clang17.s; then
             success=true
           fi
-          if clang++ -std=c++20 -Wall -Wextra -Werror -pedantic -S main.cpp -o clang20.s; then
+          if clang++ -std=c++20 -Wall -Wextra -Werror -pedantic -S 1.cpp -o clang20.s; then
             success=true
           fi
-          if clang++ -std=c++2b -Wall -Wextra -Werror -pedantic -S main.cpp -o clang23.s; then
+          if clang++ -std=c++2b -Wall -Wextra -Werror -pedantic -S 1.cpp -o clang23.s; then
             success=true
           fi
           # Exit with a non-zero status if none of the generate succeeded
@@ -106,22 +106,22 @@ jobs:
         run: |
           success=false
           # Compile with different C++ standards on arm
-          if clang++ -std=c++03 -target arm64 -Wall -Wextra -Werror -pedantic -c main.cpp -o armclang03.o; then
+          if clang++ -std=c++03 -target arm64 -Wall -Wextra -Werror -pedantic -c 1.cpp -o armclang03.o; then
             success=true
           fi
-          if clang++ -std=c++11 -target arm64 -Wall -Wextra -Werror -pedantic -c main.cpp -o armclang11.o; then
+          if clang++ -std=c++11 -target arm64 -Wall -Wextra -Werror -pedantic -c 1.cpp -o armclang11.o; then
             success=true
           fi
-          if clang++ -std=c++14 -target arm64 -Wall -Wextra -Werror -pedantic -c main.cpp -o armclang14.o; then
+          if clang++ -std=c++14 -target arm64 -Wall -Wextra -Werror -pedantic -c 1.cpp -o armclang14.o; then
             success=true
           fi
-          if clang++ -std=c++17 -target arm64 -Wall -Wextra -Werror -pedantic -c main.cpp -o armclang17.o; then
+          if clang++ -std=c++17 -target arm64 -Wall -Wextra -Werror -pedantic -c 1.cpp -o armclang17.o; then
             success=true
           fi
-          if clang++ -std=c++20 -target arm64 -Wall -Wextra -Werror -pedantic -c main.cpp -o armclang20.o; then
+          if clang++ -std=c++20 -target arm64 -Wall -Wextra -Werror -pedantic -c 1.cpp -o armclang20.o; then
             success=true
           fi
-          if clang++ -std=c++2b -target arm64 -Wall -Wextra -Werror -pedantic -c main.cpp -o armclang23.o; then
+          if clang++ -std=c++2b -target arm64 -Wall -Wextra -Werror -pedantic -c 1.cpp -o armclang23.o; then
             success=true
           fi
           # Exit with a non-zero status if none of the compilations succeeded

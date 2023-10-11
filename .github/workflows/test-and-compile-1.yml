@@ -31,40 +31,40 @@ jobs:
         run: |
           success=false
           # Compile with different C++ standards
-          if g++ -std=c++03 -Wall -Wextra -Werror -pedantic -oz -c 1.cpp -o gcc03.o; then
+          if g++ -std=c++03 -Wall -Wextra -Werror -pedantic -Oz -c 1.cpp -o gcc03.o; then
             success=true
           fi
-          if g++ -std=c++11 -Wall -Wextra -Werror -pedantic -oz -c 1.cpp -o gcc11.o; then
+          if g++ -std=c++11 -Wall -Wextra -Werror -pedantic -Oz -c 1.cpp -o gcc11.o; then
             success=true
           fi
-          if g++ -std=c++14 -Wall -Wextra -Werror -pedantic -oz -c 1.cpp -o gcc14.o; then
+          if g++ -std=c++14 -Wall -Wextra -Werror -pedantic -Oz -c 1.cpp -o gcc14.o; then
             success=true
           fi
-          if g++ -std=c++17 -Wall -Wextra -Werror -pedantic -oz -c 1.cpp -o gcc17.o; then
+          if g++ -std=c++17 -Wall -Wextra -Werror -pedantic -Oz -c 1.cpp -o gcc17.o; then
             success=true
           fi
-          if g++ -std=c++20 -Wall -Wextra -Werror -pedantic -oz -c 1.cpp -o gcc20.o; then
+          if g++ -std=c++20 -Wall -Wextra -Werror -pedantic -Oz -c 1.cpp -o gcc20.o; then
             success=true
           fi
-          if g++ -std=c++23 -Wall -Wextra -Werror -pedantic -oz -c 1.cpp -o gcc23.o; then
+          if g++ -std=c++23 -Wall -Wextra -Werror -pedantic -Oz -c 1.cpp -o gcc23.o; then
             success=true
           fi
-          if clang++ -std=c++03 -Wall -Wextra -Werror -pedantic -o3 -c 1.cpp -o clang03.o; then
+          if clang++ -std=c++03 -Wall -Wextra -Werror -pedantic -O3 -c 1.cpp -o clang03.o; then
             success=true
           fi
-          if clang++ -std=c++11 -Wall -Wextra -Werror -pedantic -o3 -c 1.cpp -o clang11.o; then
+          if clang++ -std=c++11 -Wall -Wextra -Werror -pedantic -O3 -c 1.cpp -o clang11.o; then
             success=true
           fi
-          if clang++ -std=c++14 -Wall -Wextra -Werror -pedantic -o3 -c 1.cpp -o clang14.o; then
+          if clang++ -std=c++14 -Wall -Wextra -Werror -pedantic -O3 -c 1.cpp -o clang14.o; then
             success=true
           fi
-          if clang++ -std=c++17 -Wall -Wextra -Werror -pedantic -o3 -c 1.cpp -o clang17.o; then
+          if clang++ -std=c++17 -Wall -Wextra -Werror -pedantic -O3 -c 1.cpp -o clang17.o; then
             success=true
           fi
-          if clang++ -std=c++20 -Wall -Wextra -Werror -pedantic -o3 -c 1.cpp -o clang20.o; then
+          if clang++ -std=c++20 -Wall -Wextra -Werror -pedantic -O3 -c 1.cpp -o clang20.o; then
             success=true
           fi
-          if clang++ -std=c++2b -Wall -Wextra -Werror -pedantic -o3 -c 1.cpp -o clang23.o; then
+          if clang++ -std=c++2b -Wall -Wextra -Werror -pedantic -O3 -c 1.cpp -o clang23.o; then
             success=true
           fi
           # Exit with a non-zero status if none of the compilations succeeded
@@ -76,40 +76,40 @@ jobs:
         run: |
           success=false
           # Compile with different C++ standards
-          if g++ -std=c++03 -Wall -Wextra -Werror -pedantic -oz -c 1.cpp -o gcc03.s; then
+          if g++ -std=c++03 -Wall -Wextra -Werror -pedantic -Oz -c 1.cpp -o gcc03.s; then
             success=true
           fi
-          if g++ -std=c++11 -Wall -Wextra -Werror -pedantic -oz -c 1.cpp -o gcc11.s; then
+          if g++ -std=c++11 -Wall -Wextra -Werror -pedantic -Oz -c 1.cpp -o gcc11.s; then
             success=true
           fi
-          if g++ -std=c++14 -Wall -Wextra -Werror -pedantic -oz -c 1.cpp -o gcc14.s; then
+          if g++ -std=c++14 -Wall -Wextra -Werror -pedantic -Oz -c 1.cpp -o gcc14.s; then
             success=true
           fi
-          if g++ -std=c++17 -Wall -Wextra -Werror -pedantic -oz -c 1.cpp -o gcc17.s; then
+          if g++ -std=c++17 -Wall -Wextra -Werror -pedantic -Oz -c 1.cpp -o gcc17.s; then
             success=true
           fi
-          if g++ -std=c++20 -Wall -Wextra -Werror -pedantic -oz -c 1.cpp -o gcc20.s; then
+          if g++ -std=c++20 -Wall -Wextra -Werror -pedantic -Oz -c 1.cpp -o gcc20.s; then
             success=true
           fi
-          if g++ -std=c++23 -Wall -Wextra -Werror -pedantic -oz -c 1.cpp -o gcc23.s; then
+          if g++ -std=c++23 -Wall -Wextra -Werror -pedantic -Oz -c 1.cpp -o gcc23.s; then
             success=true
           fi
-          if clang++ -std=c++03 -Wall -Wextra -Werror -pedantic -o3 -S 1.cpp -o clang03.s; then
+          if clang++ -std=c++03 -Wall -Wextra -Werror -pedantic -O3 -S 1.cpp -o clang03.s; then
             success=true
           fi
-          if clang++ -std=c++11 -Wall -Wextra -Werror -pedantic -o3 -S 1.cpp -o clang11.s; then
+          if clang++ -std=c++11 -Wall -Wextra -Werror -pedantic -O3 -S 1.cpp -o clang11.s; then
             success=true
           fi
-          if clang++ -std=c++14 -Wall -Wextra -Werror -pedantic -o3 -S 1.cpp -o clang14.s; then
+          if clang++ -std=c++14 -Wall -Wextra -Werror -pedantic -O3 -S 1.cpp -o clang14.s; then
             success=true
           fi
-          if clang++ -std=c++17 -Wall -Wextra -Werror -pedantic -o3 -S 1.cpp -o clang17.s; then
+          if clang++ -std=c++17 -Wall -Wextra -Werror -pedantic -O3 -S 1.cpp -o clang17.s; then
             success=true
           fi
-          if clang++ -std=c++20 -Wall -Wextra -Werror -pedantic -o3 -S 1.cpp -o clang20.s; then
+          if clang++ -std=c++20 -Wall -Wextra -Werror -pedantic -O3 -S 1.cpp -o clang20.s; then
             success=true
           fi
-          if clang++ -std=c++2b -Wall -Wextra -Werror -pedantic -o3 -S 1.cpp -o clang23.s; then
+          if clang++ -std=c++2b -Wall -Wextra -Werror -pedantic -O3 -S 1.cpp -o clang23.s; then
             success=true
           fi
           # Exit with a non-zero status if none of the generation succeeded
